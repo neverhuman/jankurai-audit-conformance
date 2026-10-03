@@ -13,7 +13,6 @@
     "package-lock.json": "tools",
     "tsconfig.json": "tools",
     ".jeryu/": "ops",
-    ".github/": "ops",
     "agent/": "agent",
     "ops/": "ops",
     "scripts/": "ops",

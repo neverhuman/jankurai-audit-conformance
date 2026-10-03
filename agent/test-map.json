@@ -49,10 +49,6 @@
       "command": "bash scripts/ci-local.sh required",
       "purpose": "verify local Jeryu and GitHub mirror metadata"
     },
-    ".github/": {
-      "command": "bash scripts/ci-local.sh required",
-      "purpose": "verify CI workflow entrypoints stay pinned and thin"
-    },
     "agent/": {
       "command": "bash scripts/ci-local.sh required",
       "purpose": "verify split control maps and standard metadata"

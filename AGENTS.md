@@ -30,4 +30,6 @@ the layout.
 - Prefer [`agent/owner-map.json`](agent/owner-map.json) and
   [`agent/test-map.json`](agent/test-map.json) to route a change to the smallest
   proof lane.
+- Do not edit `CHANGELOG.md` in a change: release notes are generated at release
+  time from commit subjects and `Todo:` trailers.
 - Run `bash scripts/ci-local.sh required` before handing off changes.

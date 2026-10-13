@@ -14,9 +14,11 @@ described in [`SPLIT.md`](../SPLIT.md) and `agent/split-member.toml`.
 
 ## Changelog
 
-Every release records its user-visible changes in
-[`CHANGELOG.md`](../CHANGELOG.md) under a heading that matches the new `VERSION`.
-The `Unreleased` section is promoted to a dated version heading at tag time.
+[`CHANGELOG.md`](../CHANGELOG.md) is written when a release is cut: its notes
+are generated from the commits since the previous release (their subjects and
+`Todo:` trailers), under a heading that matches the new `VERSION`. Changes do not
+add entries by hand. The `Unreleased` section is rolled up into the dated version
+heading at tag time.
 
 ## Release automation
 
@@ -24,8 +26,9 @@ GitHub is a publishing mirror only. CI runs on the forge and our own hosts, and
 releases are built and signed on our servers. A separate change introduces
 key-based release signing.
 
-1. Bump [`VERSION`](../VERSION) and promote the `Unreleased` section of
-   [`CHANGELOG.md`](../CHANGELOG.md).
+1. Bump [`VERSION`](../VERSION), generate the release notes from the commits
+   since the previous release tag, and roll the `Unreleased` section of
+   [`CHANGELOG.md`](../CHANGELOG.md) under the new version heading.
 2. Run the full local gate: `just check` (setup, fast lane, security,
    self-audit) or `bash scripts/ci-local.sh all`.
 3. Push the version commit through a forge pull request. The forge CI runs the
@@ -87,7 +90,8 @@ If a corpus release regresses:
    (`jankurai-conformance-v<version>-split.<N>`).
 2. Re-point consumers at that immutable tag; tags are never moved or deleted.
 3. Open a revert commit that restores the previous `VERSION` and
-   `CHANGELOG.md` state, and add a `### Fixed` entry describing the rollback.
+   `CHANGELOG.md` state, with a commit subject that says the release was rolled
+   back; the next release's notes pick it up.
 4. Re-run `just check` to confirm the rolled-back tree is green before
    re-publishing.
 

@@ -12,6 +12,9 @@ bash ops/ci/auditor-test.sh
 log "required lane: ci-local lane contract"
 bash scripts/ci-local-lanes-test.sh
 
+log "required lane: release-notes command fails closed"
+bash scripts/release-notes-test.sh
+
 log "required lane: conformance corpus presence check"
 test -d conformance/fixtures
 test -d conformance/expected

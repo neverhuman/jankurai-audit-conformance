@@ -6,6 +6,7 @@
 set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 cd "$REPO_ROOT"
+require_auditor
 
 log "fast lane: corpus check + targeted validation + jankurai audit"
 test -d conformance/fixtures
@@ -16,5 +17,5 @@ tsc -p tsconfig.json
 npm test
 # Targeted, changed-only fast pass writes target-only fast-score artifacts so
 # repeat runs stay narrow and deterministic.
-jankurai audit . --changed-fast --changed-from origin/main --no-score-history --json target/jankurai/audit-fast.json --md target/jankurai/fast-score.json
-jankurai audit . --no-score-history --json .jankurai/repo-score.json --md .jankurai/repo-score.md --full
+"$JANKURAI_BIN" audit . --changed-fast --changed-from origin/main --no-score-history --json target/jankurai/audit-fast.json --md target/jankurai/fast-score.json
+"$JANKURAI_BIN" audit . --no-score-history --json .jankurai/repo-score.json --md .jankurai/repo-score.md --full

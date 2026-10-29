@@ -17,6 +17,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 # dispatcher actually runs.
 declare -A lane_script=(
   [required]="ops/ci/required.sh"
+  [pr-ci]="ops/ci/pr-ci.sh"
   [fast]="ops/ci/fast.sh"
   [security]="ops/ci/security.sh"
   [audit]="ops/ci/audit.sh"

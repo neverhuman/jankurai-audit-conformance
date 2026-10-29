@@ -6,4 +6,4 @@ provider = "jeryu"
 
 [[lane]]
 name = "required"
-command = "bash ops/ci/required.sh"
+command = "bash ops/ci/pr-ci.sh"
